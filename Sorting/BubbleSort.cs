@@ -90,9 +90,6 @@ namespace Sorting
 
             //LargestInteger = IntegerArray[Size];
 
-
-
-
             int temp = 0;
 
             for (int write = 0; write < IntegerArray.Length; write++)
@@ -101,12 +98,17 @@ namespace Sorting
                 {
                     if (IntegerArray[sort] > IntegerArray[sort + 1])
                     {
-                        temp = IntegerArray[sort + 1];
+                        // capture forward one in temp
+                        temp = IntegerArray[sort + 1]; 
+                        // swap forward for current
                         IntegerArray[sort + 1] = IntegerArray[sort];
+                        // current becomes temp
                         IntegerArray[sort] = temp;
+
                     }
                 }
             }
+
         }
 
 
