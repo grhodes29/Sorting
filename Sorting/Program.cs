@@ -11,6 +11,10 @@ namespace Sorting
         static void Main(string[] args)
         {
 
+            BubbleSort bs = new BubbleSort(10, 1, 1000);
+            bs.Sort();
+
+            Console.ReadLine();
 
         }
     }

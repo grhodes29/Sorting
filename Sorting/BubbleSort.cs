@@ -11,25 +11,47 @@ namespace Sorting
 
         public int[] IntegerArray;
 
-        public int LargestInteger { get; set; }
+        private int Min { get; set; }
+        private int Max { get; set; }
 
-        public readonly int Size = 10;
-
+        private int Size { get; set; }
 
         /// <summary>
         /// DESCRIPTION: n squared operations. Very inefficient
         /// 1000 member array will take 1 million operations to sort. Ouch!!
         /// </summary>
-        public BubbleSort() {
+        public BubbleSort()
+        {
 
+            Size = 10;
+            Min = 1;
+            Max = 100;
+
+            InitializeArray();
+
+        }
+
+        private void InitializeArray()
+        {
             IntegerArray = new int[Size];
 
             Random _r = new Random();
 
             for (int i = 0; i < IntegerArray.Length; i++)
             {
-                IntegerArray[i] = _r.Next(1, 1000);
+                IntegerArray[i] = _r.Next(Min, Max);
             }
+
+        }
+
+        public BubbleSort(int size, int min, int max) 
+        {
+
+            Size = size;
+            Min = min;
+            Max = max;
+
+            InitializeArray();
 
         }
 
@@ -41,19 +63,50 @@ namespace Sorting
             // Pass 2 - 3,4,4,5,6,7,8
             // Pass 3 - 3,4,4,5,6,7,8 -- no swaps 
 
-            bool SwapOccurred = false;
-            bool IsMultipleElements = IntegerArray.Length > 1 ? true: false;
-            while(IsMultipleElements)
+            //int index = 0;
+            //bool SwapOccurred = false;
+            //bool IsMultipleElements = IntegerArray.Length > 1 ? true: false;
+            //while(SwapOccurred)
+            //{
+            //    // watch out of bounds index exception
+            //    // do forward comparison
+            //    // need to move all the way to end for array
+
+            //    // is index valid ????
+            //    while (index <= IntegerArray.Length - 1) {
+            //        // is index valid ???
+            //        if (index - 1 <= IntegerArray.Length - 1)
+            //        {
+            //            if (IntegerArray[index] > IntegerArray[index - 1])
+            //            {
+
+            //            }
+            //        }
+            //    }
+
+
+            //}
+
+
+            //LargestInteger = IntegerArray[Size];
+
+
+
+
+            int temp = 0;
+
+            for (int write = 0; write < IntegerArray.Length; write++)
             {
-                // watch out of bounds index exception
-                // do forward comparison
-                // need to move all the way to end for array
-               
-
+                for (int sort = 0; sort < IntegerArray.Length - 1; sort++)
+                {
+                    if (IntegerArray[sort] > IntegerArray[sort + 1])
+                    {
+                        temp = IntegerArray[sort + 1];
+                        IntegerArray[sort + 1] = IntegerArray[sort];
+                        IntegerArray[sort] = temp;
+                    }
+                }
             }
-
-
-            LargestInteger = IntegerArray[Size];
         }
 
 
